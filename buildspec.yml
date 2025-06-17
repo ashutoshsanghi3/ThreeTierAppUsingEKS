@@ -9,6 +9,7 @@ env:
     FRONTEND_DIR: Application-Code/frontend
     BACKEND_DIR: Application-Code/backend
     K8S_MANIFEST_DIR: Kubernetes-Manifests-file
+    
 
 phases:
   install:
@@ -24,6 +25,8 @@ phases:
       - export IMAGE_TAG=v1.${CODEBUILD_BUILD_NUMBER}
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+      - echo Logging in to Docker Hub...
+      - echo $DOCKER_HUB_PASSWORD | docker login -u $DOCKER_HUB_USERNAME --password-stdin
       - echo Installing frontend and backend dependencies...
       - cd $FRONTEND_DIR && npm install && cd -
       - cd $BACKEND_DIR && npm install && cd -
