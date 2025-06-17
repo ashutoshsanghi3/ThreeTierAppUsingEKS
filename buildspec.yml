@@ -9,7 +9,8 @@ env:
     FRONTEND_DIR: Application-Code/frontend
     BACKEND_DIR: Application-Code/backend
     K8S_MANIFEST_DIR: Kubernetes-Manifests-file
-    
+    DOCKER_HUB_USERNAME: ashutoshsanghi
+    DOCKER_HUB_PASSWORD: dckr_pat_JlGl968JH7EPE2qmM6I2PT1Mr-4
 
 phases:
   install:
