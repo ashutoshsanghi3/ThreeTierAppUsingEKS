@@ -10,9 +10,15 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: backend.amanpathakdevops.study
-      http:
+    - http:
         paths:
+          - path: /ok
+            pathType: Prefix
+            backend:
+              service:
+                name: api
+                port:
+                  number: 3500
           - path: /api
             pathType: Prefix
             backend:
